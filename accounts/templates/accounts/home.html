@@ -5,11 +5,13 @@
 {% endblock %}
 
 {% block content %}
-    {% if user.is_authenticated %}
-        Hi, {{ user.username }}
-        <a href="{% url 'logout' %}">Log out</a>
-    {% else %}
-        You are not logged In
-        <a href="{% url 'login' %}">Log In</a>
-    {% endif %}
+    <div class="container">
+        {% if user.is_authenticated %}
+            Hi, {{ user.username }}
+            <a href="{% url 'logout' %}">Log out</a>
+        {% else %}
+            You are not logged In
+            <a href="{% url 'login' %}">Log In</a>
+        {% endif %}
+    </div>
 {% endblock %}
