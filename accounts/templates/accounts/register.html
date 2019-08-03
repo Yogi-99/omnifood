@@ -8,11 +8,13 @@
 
 {% block content %}
     <div class="container">
-        <form method="POST">
+        <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             <fieldset class="form-group">
                 <legend class="border-bottom mb-4">Join Today</legend>
                 {{ user_form|crispy }}
+                <legend class="border-bottom mb-4">Restaurant Information</legend>
+                {{ restaurant_form|crispy }}
             </fieldset>
             <div class="form-group">
                 <button class="btn btn-outline-info" type="submit">Sign Up</button>
