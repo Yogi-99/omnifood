@@ -1,5 +1,10 @@
 from django.urls import path
+from . import views as restaurant_views
 
 urlpatterns = [
-
+    path('dashboard', restaurant_views.dashboard, name='dashboard'),
+    path('account', restaurant_views.account, name='account'),
+    path('order', restaurant_views.order, name='order'),
+    path('report', restaurant_views.report, name='report'),
+    path('meal', restaurant_views.meal, name='meal')
 ]

@@ -1,0 +1,38 @@
+{% extends "restaurants/base.html" %}
+{% block title %}
+    Restaurant Dashboard
+{% endblock %}
+
+{% block username %}
+    <p class="ml-5">Restaurant, Hi {{ user.username }}</p>
+{% endblock %}
+{% block sidebar_items %}
+
+    <li class="nav-item ">
+        <a class="nav-link" href="{% url 'account' %}">
+            <i class="material-icons">person</i>
+            <p>Account</p>
+        </a>
+    </li>
+    <li class="nav-item ">
+        <a class="nav-link" href="{% url 'meal' %}">
+            <i class="material-icons">person</i>
+            <p>Meal</p>
+        </a>
+    </li>
+    <li class="nav-item ">
+        <a class="nav-link" href="{% url 'order' %}">
+            <i class="material-icons">person</i>
+            <p>Order</p>
+        </a>
+    </li>
+    <li class="nav-item ">
+        <a class="nav-link" href="{% url 'report' %}">
+            <i class="material-icons">person</i>
+            <p>Report</p>
+        </a>
+    </li>
+
+{% endblock %}
+
+
