@@ -6,7 +6,7 @@
 
 
 {% block title %}
-    Accounts
+    Add Meal
 {% endblock %}
 
 {% block content %}
@@ -16,13 +16,14 @@
                 <div class="col">
                     <div class="card">
                         <div class="card-header card-header-primary">
-                            <h4 class="card-title">Edit Profile</h4>
-                            <p class="card-category">Complete your profile</p>
+                            <h4 class="card-title">Add Meal</h4>
+                            <p class="card-category">Your dishes goes here</p>
                         </div>
                         <div class="card-body">
                             <form method="POST" enctype="multipart/form-data">
-                                {{ edit_user_form| crispy}}
-                                {{ edit_restaurant_form|crispy }}
+                                {% csrf_token %}$END
+                                {{ meal_form| crispy}}
+                                <button class="btn btn-danger">Create Meal</button>
                             </form>
                         </div>
                     </div>

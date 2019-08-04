@@ -17,6 +17,10 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
     <!-- Material Kit CSS -->
     <link href="{% static 'css/material-dashboard.css' %}" rel="stylesheet"/>
+
+    <link rel="stylesheet" href="/static/css/mystyle.css">
+
+    <link rel="stylesheet" href="/bootstrap4/css">
 </head>
 
 <body class="dark-edition">
@@ -40,7 +44,7 @@
         </div>
         <div class="sidebar-wrapper">
             <ul class="nav">
-                <li class="nav-item active  ">
+                <li class="nav-item">
                     <a class="nav-link" href="javascript:void(0)">
                         <i class="material-icons">dashboard</i>
                         <p>Dashboard</p>
@@ -50,7 +54,10 @@
 
                 {% endblock %}
             </ul>
+
+
         </div>
+
     </div>
     <div class="main-panel text-white">
         <!-- Navbar -->
@@ -83,9 +90,9 @@
         </nav>
         <!-- End Navbar -->
         <div class="content">
-
             <div class="container-fluid">
                 <!-- your content here -->
+
                 {% block content %}
 
                 {% endblock %}

@@ -1,4 +1,7 @@
 {% extends "restaurants/base.html" %}
+<head>
+    <link rel="stylesheet" href="/bootstrap4/css">
+</head>
 {% block title %}
     Restaurant Dashboard
 {% endblock %}
@@ -9,7 +12,7 @@
 
 {% block username %}
     <p class="ml-5">Hi {{ request.user.get_full_name }}</p>
-    <br>
+
     <p class="mx-5 ">{{ request.user.restaurant.name }}</p>
 {% endblock %}
 
@@ -19,27 +22,33 @@
     <li class="nav-item ">
         <a class="nav-link" href="{% url 'account' %}">
             <i class="material-icons">person</i>
-            <p>Account</p>
+            <p>Orders</p>
         </a>
     </li>
     <li class="nav-item ">
         <a class="nav-link" href="{% url 'meal' %}">
             <i class="material-icons">person</i>
-            <p>Meal</p>
+            <p>Meals</p>
         </a>
     </li>
     <li class="nav-item ">
         <a class="nav-link" href="{% url 'order' %}">
             <i class="material-icons">person</i>
-            <p>Order</p>
+            <p>Reports</p>
         </a>
     </li>
     <li class="nav-item ">
         <a class="nav-link" href="{% url 'report' %}">
             <i class="material-icons">person</i>
-            <p>Report</p>
+            <p>Account</p>
         </a>
     </li>
+
+
+    <div class="container text-center">
+        <a href="{% url 'logout' %}" class="mt-5">Logout</a>
+    </div>
+
 
 {% endblock %}
 

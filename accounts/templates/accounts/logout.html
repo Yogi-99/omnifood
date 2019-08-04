@@ -9,6 +9,7 @@
 
 {% block content %}
     <div class="container">
-        You are logged out.
+        <p class="h1">You are successfully logged out.</p>
+        <a href="{% url 'login' %}" class="info-link">Log in again?</a>
     </div>
 {% endblock %}
