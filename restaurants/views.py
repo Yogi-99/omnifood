@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from .forms import UserEditForm
 from .forms import RestaurantEditForm, MealForm
+from .models import Meal
 
 
 # Create your views here.
@@ -28,7 +29,10 @@ def account(request):
 
 
 def meal(request):
-    return render(request, 'restaurants/meal.html')
+    meals = Meal.objects.filter(restaurant=request.user.restaurant).order_by("-id")
+    return render(request, 'restaurants/meal.html', {
+        'meals': meals
+    })
 
 
 def order(request):
