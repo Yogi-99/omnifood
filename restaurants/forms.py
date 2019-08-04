@@ -12,6 +12,11 @@ class UserEditForm(UserRegistrationForm):
             'last_name',
             'email'
         )
+        exclude = (
+            'username',
+            'password1',
+            'password2',
+        )
 
 
 class RestaurantForm(forms.ModelForm):
@@ -23,6 +28,19 @@ class RestaurantForm(forms.ModelForm):
             'address',
             'logo'
         ]
+
+
+class RestaurantEditForm(forms.ModelForm):
+    class Meta:
+        model = Restaurant
+        fields = [
+            'name',
+            'phone',
+            'address',
+        ]
+        exclude = (
+            'logo',
+        )
 
 
 class MealForm(forms.ModelForm):

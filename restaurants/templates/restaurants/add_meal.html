@@ -21,7 +21,7 @@
                         </div>
                         <div class="card-body">
                             <form method="POST" enctype="multipart/form-data">
-                                {% csrf_token %}$END
+                                {% csrf_token %}
                                 {{ meal_form| crispy}}
                                 <button class="btn btn-danger">Create Meal</button>
                             </form>

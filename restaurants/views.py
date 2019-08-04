@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .forms import UserEditForm
-from .forms import RestaurantForm, MealForm
+from .forms import RestaurantEditForm, MealForm
 
 
 # Create your views here.
@@ -11,7 +11,15 @@ def dashboard(request):
 
 def account(request):
     edit_user_form = UserEditForm(instance=request.user)
-    edit_restaurant_form = RestaurantForm(instance=request.user.restaurant)
+    edit_restaurant_form = RestaurantEditForm(instance=request.user.restaurant)
+    
+    if request.method == "POST":
+        edit_user_form = UserEditForm(request.POST, instance=request.user)
+        edit_restaurant_form = RestaurantEditForm(request.POST, instance=request.user.restaurant)
+        
+        if edit_user_form.is_valid() and edit_restaurant_form.is_valid():
+            edit_user_form.save()
+            edit_restaurant_form.save()
 
     return render(request, 'restaurants/account.html', {
         'edit_user_form': edit_user_form,
