@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'bootstrap4',
     'oauth2_provider',
+    'rest_framework',
     'social_django',
     'rest_framework_social_oauth2',
 ]

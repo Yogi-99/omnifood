@@ -13,6 +13,20 @@ class Restaurant(models.Model):
         return self.name
 
 
+class Order(models.Model):
+    COOKING = 1
+    READY = 2
+    ONTHEWAY = 3
+    DELIVERED = 4
+
+    STATUS_CHOICES = (
+        (COOKING, "Cooking"),
+        (READY, "ready"),
+        (ONTHEWAY, "On the way"),
+        (DELIVERED, "Delivered"),
+    )
+
+
 class Meal(models.Model):
     restaurant = models.ForeignKey(Restaurant, on_delete=models.CASCADE)
     meal = models.CharField(max_length=50)
@@ -22,3 +36,7 @@ class Meal(models.Model):
 
     def __str__(self):
         return self.meal
+
+
+class Customer(models.Model):
+    pass
