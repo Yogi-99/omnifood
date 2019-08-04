@@ -1,3 +1,4 @@
+{% load static %}
 <!doctype html>
 <html lang="en">
 <head>
@@ -18,11 +19,11 @@
         <title>Omnifood</title>
     {% endif %}
 </head>
-<body>
+<body class="bg-blue">
 
 
-    <div class="container">
-        {% if messages %}
+<div class="container">
+    {% if messages %}
         {% for message in messages %}
             <div class="alert alert-{{ message.tags }}">
                 {{ message }}
@@ -31,12 +32,24 @@
 
 
     {% endif %}
+</div>
+<div class="container">
+
+    <div class="panel panel-body text-white">
+        <div class="panel-body >
+            <h4 class="text-center text-uppercase">
+                <b>{% block heading %}{% endblock %}</b>
+            </h4>
+            <br>
+            {% block content %}
+
+            {% endblock %}
+        </div>
     </div>
 
 
-{% block content %}
+</div>
 
-{% endblock %}
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->

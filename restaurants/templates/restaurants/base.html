@@ -29,8 +29,12 @@
         Tip 2: you can also add an image using data-image tag
     -->
         <div class="logo">
+
+            {% block logo %}
+
+            {% endblock %}
             {% block username %}
-            
+
             {% endblock %}
 
         </div>
@@ -43,12 +47,12 @@
                     </a>
                 </li>
                 {% block sidebar_items %}
-                
+
                 {% endblock %}
             </ul>
         </div>
     </div>
-    <div class="main-panel">
+    <div class="main-panel text-white">
         <!-- Navbar -->
         <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
             <div class="container-fluid">

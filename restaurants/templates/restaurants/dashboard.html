@@ -3,9 +3,17 @@
     Restaurant Dashboard
 {% endblock %}
 
-{% block username %}
-    <p class="ml-5">Restaurant, Hi {{ user.username }}</p>
+{% block logo %}
+    <img src="{{ MEDIA_URL }}{{ request.user.restaurant.logo }}" class="rounded mx-auto d-block" height="90" width="90">
 {% endblock %}
+
+{% block username %}
+    <p class="ml-5">Hi {{ request.user.get_full_name }}</p>
+    <br>
+    <p class="mx-5 ">{{ request.user.restaurant.name }}</p>
+{% endblock %}
+
+
 {% block sidebar_items %}
 
     <li class="nav-item ">

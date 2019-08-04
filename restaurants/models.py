@@ -7,7 +7,7 @@ class Restaurant(models.Model):
     name = models.CharField(max_length=50)
     phone = models.CharField(max_length=15)
     address = models.CharField(max_length=150)
-    logo = models.ImageField(upload_to='restaurant_logo', blank=True)
+    logo = models.ImageField(upload_to='restaurant_logo', blank=False)
 
     def __str__(self):
         return self.name
