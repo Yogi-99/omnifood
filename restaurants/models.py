@@ -1,4 +1,6 @@
 from django.contrib.auth.models import User
+from accounts.models import Courier, Consumer
+from django.utils import timezone
 from django.db import models
 
 
@@ -26,6 +28,18 @@ class Order(models.Model):
         (DELIVERED, "Delivered"),
     )
 
+    consumer = models.ForeignKey(Consumer, on_delete=models.CASCADE, null=True, blank=True)
+    courier = models.ForeignKey(Courier, on_delete=models.CASCADE, null=True, blank=True)
+    restaurant = models.ForeignKey(Restaurant, on_delete=models.CASCADE, null=True, blank=True)
+    status = models.IntegerField(choices=STATUS_CHOICES, null=True, blank=True)
+    total = models.IntegerField(blank=True, null=True)
+    address = models.CharField(max_length=500, null=True, blank=True)
+    created_at = models.DateTimeField(default=timezone.now)
+    picked_at = models.DateTimeField(blank=True, null=True)
+
+    def __str__(self):
+        return str(self.id)
+
 
 class Meal(models.Model):
     restaurant = models.ForeignKey(Restaurant, on_delete=models.CASCADE)
@@ -38,5 +52,11 @@ class Meal(models.Model):
         return self.meal
 
 
-class Customer(models.Model):
-    pass
+class OrderDetails(models.Model):
+    order = models.ForeignKey(Order, on_delete=models.CASCADE, related_name='order_details')
+    meal = models.ForeignKey(Meal, on_delete=models.CASCADE)
+    quantity = models.IntegerField()
+    sub_total = models.IntegerField()
+
+    def __str__(self):
+        return str(self.id)
