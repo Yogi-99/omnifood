@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from .forms import UserEditForm
 from .forms import RestaurantEditForm, MealForm
-from .models import Meal
+from .models import Meal, Order
 
 
 # Create your views here.
@@ -36,7 +36,19 @@ def meal(request):
 
 
 def order(request):
-    return render(request, 'restaurants/order.html')
+    if request.method == "POST":
+        order = Order.objects.get(id = request.POST['id'], restaurant=request.user.restaurant)
+        if order.status == Order.COOKING:
+            order.status = Order.READY
+            order.save()
+
+    orders = Order.objects.all()\
+        .filter(restaurant=request.user.restaurant)\
+        .order_by("-id")
+
+    return render(request, 'restaurants/order.html', {
+        'orders': orders
+    })
 
 
 def report(request):

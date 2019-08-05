@@ -23,7 +23,7 @@ class Order(models.Model):
 
     STATUS_CHOICES = (
         (COOKING, "Cooking"),
-        (READY, "ready"),
+        (READY, "Ready"),
         (ONTHEWAY, "On the way"),
         (DELIVERED, "Delivered"),
     )

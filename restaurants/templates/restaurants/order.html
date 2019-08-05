@@ -1,9 +1,66 @@
 {% extends "restaurants/dashboard.html" %}
 
 {% block title %}
-Order
+    Order
 {% endblock %}
 
 {% block content %}
-    Order Page
+
+    <div class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header card-header-primary">
+                            <h4 class="card-title text-white">Orders</h4>
+                            <p class="card-category">List of all orders</p>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead class="text-primary">
+                                    <th>Id</th>
+                                    <th>Details</th>
+                                    <th>Consumer</th>
+                                    <th>Courier</th>
+                                    <th>Total</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                    </thead>
+                                    <tbody>
+                                    {% for order in orders %}
+                                        <tr>
+                                            <td>{{ order.id }}</td>
+                                            <td>
+                                                {% for order_details in order.order_details.all %}
+                                                    {{ order_details.meal.meal }} {{ order_details.meal.price }} x
+                                                    {{ order_details.quantity }} = ${{ order_details.sub_total }}
+                                                {% endfor %}
+
+                                            </td>
+                                            <td>{{ order.consumer }}</td>
+                                            <td>{{ order.courier }}</td>
+                                            <td >{{ order.total }}</td>
+                                            <td>{{ order.get_status_display }}</td>
+                                            <td>
+                                                {% if order.status == 1 %}
+                                                    <form method="POST">
+                                                        {% csrf_token %}
+                                                        <input name="id" value="{{ order.id }}" hidden>
+                                                        <button class="btn btn-danger">Ready</button>
+                                                    </form>
+                                                {% endif %}
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
