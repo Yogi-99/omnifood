@@ -9,5 +9,6 @@ urlpatterns = [
     path('report', restaurant_views.report, name='report'),
     path('meal', restaurant_views.meal, name='meal'),
     path('meal/add', restaurant_views.add_meal, name='add_meal'),
-    path('api', apis.get_restaurant)
+    path('api', apis.get_restaurant),
+    path('meal/edit/<int:id>/', restaurant_views.edit_meal, name='edit_meal'),
 ]

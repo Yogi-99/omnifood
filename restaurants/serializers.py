@@ -3,6 +3,13 @@ from .models import Restaurant
 
 
 class RestaurantSerializer(serializers.ModelSerializer):
+    logo = serializers.SerializerMethodField()
+
+    def get_logo(self, restaurant):
+        request = self._context.get('request')
+        logo_url = restaurant.logo.url
+        return request.build_absolute_uri(logo_url)
+
     class Meta:
         model = Restaurant
         fields = (

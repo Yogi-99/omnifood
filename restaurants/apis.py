@@ -6,7 +6,10 @@ from .serializers import RestaurantSerializer
 def get_restaurant(request):
     restaurants = RestaurantSerializer(
         Restaurant.objects.all().order_by("-id"),
-        many=True
+        many=True,
+        context={
+            'request': request
+        }
     ).data
 
     return JsonResponse({

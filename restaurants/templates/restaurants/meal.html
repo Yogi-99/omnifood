@@ -14,7 +14,7 @@
                     <div class="card">
                         <div class="card-header card-header-primary">
                             <h4 class="card-title ">Meal List</h4>
-                            <p class="card-category"> Here are all your meals</p>
+                            <p class="card-category">What's on the menu?</p>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -23,20 +23,22 @@
                                     <th>Id</th>
                                     <th>Name</th>
                                     <th>Description</th>
-                                    <th >Price</th>
+                                    <th>Price</th>
                                     <th class="text-center">Image</th>
+                                    <th class="text-center">Action</th>
                                     </thead>
                                     <tbody>
-                                        {% for meal in meals %}
-                                            <tr>
-                                                <td>{{ meal.id }}</td>
-                                                <td>{{ meal.meal }}</td>
-                                                <td>{{ meal.description }}</td>
-                                                <td>{{ meal.price }}</td>
-                                                <td class="text-center"><img src="{{ MEDIA_URL }}{{ meal.image }}" alt="" width="50" height="50"></td>
-                                            </tr>                                        
-                                        {% endfor %}
-
+                                    {% for meal in meals %}
+                                        <tr>
+                                            <td >{{ meal.id }}</td>
+                                            <td>{{ meal.meal }}</td>
+                                            <td>{{ meal.description }}</td>
+                                            <td>{{ meal.price }}</td>
+                                            <td class="text-center"><img src="{{ MEDIA_URL }}{{ meal.image }}" class="rounded-circle" alt=""
+                                                                         width="50" height="50"></td>
+                                            <td class="text-center"><a href="{% url 'edit_meal' meal.id %}" class="btn btn-danger btn-sm">Edit</a></td>
+                                        </tr>
+                                    {% endfor %}
                                     </tbody>
                                 </table>
                             </div>
