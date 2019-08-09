@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Restaurant
+from .models import Restaurant, Meal, Order
 
 
 class RestaurantSerializer(serializers.ModelSerializer):
@@ -19,3 +19,23 @@ class RestaurantSerializer(serializers.ModelSerializer):
             "address",
             "logo"
         )
+
+
+class MealSerializer(serializers.ModelSerializer):
+    image = serializers.SerializerMethodField()
+
+    def get_image(self, meal):
+        request = self.context.get('request')
+        image_url = meal.image.url
+        return request.build_absolute_uri(image_url)
+
+    class Meta:
+        model = Meal
+        fields = [
+            'id',
+            'meal',
+            'description',
+            'image',
+            'price'
+        ]
+

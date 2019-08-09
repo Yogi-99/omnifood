@@ -7,6 +7,5 @@ urlpatterns = [
     path('logout', auth_views.LogoutView.as_view(template_name='accounts/logout.html'), name='logout'),
     path('home', user_views.home, name='home'),
     path('register', user_views.register, name='register'),
-    path('auth', include('rest_framework_social_oauth2.urls')),
 
 ]

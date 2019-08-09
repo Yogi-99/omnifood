@@ -11,4 +11,7 @@ urlpatterns = [
     path('meal/add', restaurant_views.add_meal, name='add_meal'),
     path('api', apis.get_restaurant),
     path('meal/edit/<int:id>/', restaurant_views.edit_meal, name='edit_meal'),
+    path('meals/<int:restaurant_id>', apis.get_meals),
+    path('order/add/', apis.add_order),
+    path('order/latest', apis.get_latest_order),
 ]

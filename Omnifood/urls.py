@@ -22,6 +22,7 @@ urlpatterns = [
     path('accounts/', include('accounts.urls')),
     path('admin/', admin.site.urls),
     path('restaurant/', include('restaurants.urls')),
+    path('accounts/api/', include('rest_framework_social_oauth2.urls'))
 ]
 
 if settings.DEBUG:
