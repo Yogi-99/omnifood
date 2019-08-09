@@ -3,9 +3,15 @@ from django.views.decorators.csrf import csrf_exempt
 import json
 from rest_framework.views import APIView
 from oauth2_provider.models import AccessToken
+from rest_framework.generics import ListAPIView
 from .models import Restaurant, Meal, Order, OrderDetails
 from django.utils import timezone
 from .serializers import RestaurantSerializer, MealSerializer
+
+
+class ListRestaurants(ListAPIView):
+    queryset = Restaurant.objects.all()
+    serializer_class = RestaurantSerializer
 
 
 def get_restaurant(request):
