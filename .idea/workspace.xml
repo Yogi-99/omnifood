@@ -1,16 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="532425aa-1365-4813-8405-59f4b8752ffc" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Omnifood/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/Omnifood/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Omnifood/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Omnifood/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accounts/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/restaurants/apis.py" beforeDir="false" afterPath="$PROJECT_DIR$/restaurants/apis.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/restaurants/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/restaurants/serializers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/restaurants/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/restaurants/urls.py" afterDir="false" />
-    </list>
+    <list default="true" id="532425aa-1365-4813-8405-59f4b8752ffc" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,20 +26,7 @@
     <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Omnifood/settings.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="159" column="31" selection-start-line="159" selection-start-column="31" selection-end-line="159" selection-end-column="31" />
-              <folding>
-                <element signature="e#309#318#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -216,12 +194,12 @@
       <workItem from="1565282740026" duration="1735000" />
       <workItem from="1565292020720" duration="3689000" />
       <workItem from="1565336594345" duration="20000" />
-      <workItem from="1565347987710" duration="736000" />
+      <workItem from="1565347987710" duration="2126000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="92164000" />
+    <option name="totallyTimeSpent" value="93554000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -241,7 +219,7 @@
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Python Console" order="11" weight="0.32844576" />
-      <window_info active="true" anchor="bottom" x="383" y="126" width="1051" height="504" id="Terminal" order="12" visible="true" weight="0.60703814" />
+      <window_info active="true" anchor="bottom" x="383" y="126" width="1051" height="504" id="Terminal" order="12" visible="true" weight="0.7052786" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />

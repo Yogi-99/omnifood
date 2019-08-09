@@ -1,1 +1,1 @@
-web: gunicorn Omnifood.wsgi
+web: gunicorn Omnifood.wsgi --log-file -
