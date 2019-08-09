@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="532425aa-1365-4813-8405-59f4b8752ffc" name="Default Changelist" comment="" />
+    <list default="true" id="532425aa-1365-4813-8405-59f4b8752ffc" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/Omnifood/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/Omnifood/settings.py" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,7 +28,20 @@
     <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375" />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Omnifood/settings.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="378">
+              <caret line="63" column="47" selection-start-line="63" selection-start-column="47" selection-end-line="63" selection-end-column="47" />
+              <folding>
+                <element signature="e#309#318#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -40,6 +55,7 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>dark-edition</find>
+      <find>allowe</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -48,7 +64,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/accounts/templates/accounts/home.html" />
         <option value="$PROJECT_DIR$/restaurants/templates/restaurants/report.html" />
         <option value="$PROJECT_DIR$/accounts/templates/accounts/login.html" />
@@ -77,6 +92,8 @@
         <option value="$PROJECT_DIR$/restaurants/urls.py" />
         <option value="$PROJECT_DIR$/restaurants/serializers.py" />
         <option value="$PROJECT_DIR$/restaurants/apis.py" />
+        <option value="$PROJECT_DIR$/runtime.txt" />
+        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/Omnifood/settings.py" />
       </list>
     </option>
@@ -194,15 +211,16 @@
       <workItem from="1565282740026" duration="1735000" />
       <workItem from="1565292020720" duration="3689000" />
       <workItem from="1565336594345" duration="20000" />
-      <workItem from="1565347987710" duration="2126000" />
+      <workItem from="1565347987710" duration="2607000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="93554000" />
+    <option name="totallyTimeSpent" value="94035000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2837838" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -219,7 +237,7 @@
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Python Console" order="11" weight="0.32844576" />
-      <window_info active="true" anchor="bottom" x="383" y="126" width="1051" height="504" id="Terminal" order="12" visible="true" weight="0.7052786" />
+      <window_info active="true" anchor="bottom" x="383" y="126" width="1051" height="504" id="Terminal" order="12" visible="true" weight="0.1510264" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -258,13 +276,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
           <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="140" column="44" selection-end-line="140" selection-end-column="44" />
         </state>
       </provider>
     </entry>
@@ -542,10 +553,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/runtime.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="21">
+          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="86">
+          <caret line="138" lean-forward="true" selection-start-line="138" selection-end-line="138" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Omnifood/settings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="159" column="31" selection-start-line="159" selection-start-column="31" selection-end-line="159" selection-end-column="31" />
+        <state relative-caret-position="378">
+          <caret line="63" column="47" selection-start-line="63" selection-start-column="47" selection-end-line="63" selection-end-column="47" />
           <folding>
             <element signature="e#309#318#0" expanded="true" />
           </folding>
