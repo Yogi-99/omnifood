@@ -2,13 +2,27 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from .forms import UserRegistrationForm
 from restaurants.forms import RestaurantForm
+from rest_framework import generics
+from .models import Consumer, Courier
+from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
+from .serializers import ConsumerSerializer, UserSerializer
 
 
 # Create your views here.
 
 def home(request):
     return render(request, 'accounts/home.html')
+
+
+class ListCreateConsumer(generics.ListCreateAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+
+
+class CreateConsumer(generics.ListCreateAPIView):
+    queryset = Consumer.objects.all()
+    serializer_class = ConsumerSerializer
 
 
 def register(request):
