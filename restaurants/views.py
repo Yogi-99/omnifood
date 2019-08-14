@@ -73,10 +73,10 @@ def add_meal(request):
 
 
 def edit_meal(request, id):
-    edit_meal_form = MealForm(instance = Meal.objects.get(id=id))
+    edit_meal_form = MealForm(instance=Meal.objects.get(id=id))
 
     if request.method == "POST":
-        edit_meal_form = MealForm(request.POST, request.FILES, instance=Meal.objects.get(id = id))
+        edit_meal_form = MealForm(request.POST, request.FILES, instance=Meal.objects.get(id=id))
 
         if edit_meal_form.is_valid():
             edit_meal_form.save()

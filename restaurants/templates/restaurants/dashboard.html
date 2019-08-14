@@ -16,13 +16,38 @@
     <p class="mx-5 ">{{ request.user.restaurant.name }}</p>
 {% endblock %}
 
+{% block script %}
+    <script>
+        $(document).ready(function () {
+            var now = new Date();
+            setInterval(function () {
+                $.ajax({
+                    url: '/order/notification/' + now.toISOString() + '/',
+                    method: 'GET',
+                    success: function (data) {
+                        if(data['notification'] === 0) {
+                            $('badge').text('');
+                        } else {
+                            $('badge').text(data['notification']);
+                        }
+
+                    }
+                })
+            }, 3000)
+        })
+    </script>
+{% endblock %}
+
 
 {% block sidebar_items %}
 
     <li class="nav-item ">
         <a class="nav-link" href="{% url 'order' %}">
             <i class="material-icons"></i>
-            <p>Orders</p>
+            <p>
+                Orders
+                <span class="badge"></span>
+            </p>
         </a>
     </li>
     <li class="nav-item ">

@@ -14,4 +14,5 @@ urlpatterns = [
     path('meals/<int:restaurant_id>', apis.get_meals),
     path('order/add/', apis.add_order),
     path('order/latest', apis.get_latest_order),
+#    path('order/notification/<last_request_item>', apis.order_notification),
 ]

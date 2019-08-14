@@ -45,9 +45,9 @@ def get_meals(request, restaurant_id):
 def add_order(request):
     if request.method == "POST":
         access_token = AccessToken.objects.get(token=request.POST.get("access_token"), expires__gt=timezone.now())
-        customer = access_token.user.consumer
+        consumer = access_token.user.consumer
 
-        if Order.objects.filter(consumer=customer).exclude(status=Order.DELIVERED):
+        if Order.objects.filter(consumer=consumer).exclude(status=Order.DELIVERED):
             return JsonResponse({
                 'status': 'failed',
                 'error': 'Your last order must be completed'
@@ -64,12 +64,12 @@ def add_order(request):
         order_total = 0
 
         for meal in order_details:
-            order_total += Meal.objects.get(id="").price * meal["quantity"]
+            order_total = Meal.objects.get(id=meal["meal_id"]).price * meal["quantity"]
 
-        if len(order_total) > 0:
+        if len(order_details) > 0:
             order = Order.objects.create(
-                customer=customer,
-                restaurant_id=request.POST['restaurant_id'],
+                consumer=consumer,
+                restaurant_id=request.POST["restaurant_id"],
                 total=order_total,
                 status=Order.COOKING,
                 address=request.POST['address']
@@ -78,9 +78,9 @@ def add_order(request):
             for meal in order_details:
                 OrderDetails.objects.create(
                     order=order,
-                    meal_id=meal['meal_id'],
-                    quantity=meal['quantity'],
-                    sub_total=Meal.objects.get(id=meal['meal_id']).price * meal['quantity']
+                    meal_id=meal["meal_id"],
+                    quantity=meal["quantity"],
+                    sub_total=Meal.objects.get(id=meal["meal_id"]).price * meal["quantity"]
                 )
 
             return JsonResponse({
@@ -92,3 +92,10 @@ def get_latest_order(request):
     return JsonResponse({
 
     })
+
+
+# def order_notification(request, last_request_time):
+#     notification = Order.objects.filter(restaurant=request.user.restauramt, created_at__gt=last_request_time).count()
+#     return JsonResponse({
+#         "notification": notification
+#     })
