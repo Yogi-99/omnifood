@@ -6,7 +6,7 @@ from oauth2_provider.models import AccessToken
 from rest_framework.generics import ListAPIView
 from .models import Restaurant, Meal, Order, OrderDetails
 from django.utils import timezone
-from .serializers import RestaurantSerializer, MealSerializer
+from .serializers import RestaurantSerializer, MealSerializer, OrderSerializer
 
 
 class ListRestaurants(ListAPIView):
@@ -89,8 +89,13 @@ def add_order(request):
 
 
 def get_latest_order(request):
-    return JsonResponse({
 
+    access_token = AccessToken.objects.get(token=request.GET.get("access_token"), expires__gt=timezone.now())
+
+    consumer = access_token.user.consumer
+    order = OrderSerializer(Order.objects.filter(consumer=consumer).last()).data
+    return JsonResponse({
+        'order': order
     })
 
 
