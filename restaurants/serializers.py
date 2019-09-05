@@ -39,6 +39,7 @@ class MealSerializer(serializers.ModelSerializer):
     class Meta:
         model = Meal
         fields = [
+            'restaurant',
             'id',
             'meal',
             'description',
@@ -52,12 +53,12 @@ class OrderConsumerSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Consumer
-        fields = [
+        fields = (
             'id',
             'name',
             'phone',
             'address'
-        ]
+        )
 
 
 class OrderCourierSerializer(serializers.ModelSerializer):

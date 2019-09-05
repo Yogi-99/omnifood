@@ -42,7 +42,7 @@ class Order(models.Model):
 
 
 class Meal(models.Model):
-    restaurant = models.ForeignKey(Restaurant, on_delete=models.CASCADE)
+    restaurant = models.ForeignKey(Restaurant, on_delete=models.CASCADE, related_name='meal')
     meal = models.CharField(max_length=50)
     description = models.CharField(max_length=200)
     image = models.ImageField(upload_to='meal_image/', blank=False)

@@ -1,7 +1,10 @@
 from django.shortcuts import render, redirect
+from rest_framework import viewsets
+
+from restaurants.serializers import RestaurantSerializer
 from .forms import UserEditForm
 from .forms import RestaurantEditForm, MealForm
-from .models import Meal, Order
+from .models import Meal, Order, Restaurant
 
 
 # Create your views here.
@@ -85,3 +88,8 @@ def edit_meal(request, id):
     return render(request, 'restaurants/edit_meal.html', {
         'edit_meal_form': edit_meal_form
     })
+
+
+class ListRestaurantsViewSet(viewsets.ModelViewSet):
+    queryset = Restaurant.objects.all()
+    serializer_class = RestaurantSerializer

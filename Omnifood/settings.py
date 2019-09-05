@@ -37,7 +37,6 @@ ALLOWED_HOSTS = [
 
 INSTALLED_APPS = [
     'restaurants.apps.RestaurantsConfig',
-    'rest_framework.authtoken',
     'accounts.apps.AccountsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -49,6 +48,7 @@ INSTALLED_APPS = [
     'bootstrap4',
     'oauth2_provider',
     'rest_framework',
+    'rest_framework.authtoken',
     'social_django',
     'rest_framework_social_oauth2',
     'whitenoise.runserver_nostatic'
@@ -128,6 +128,15 @@ AUTHENTICATION_BACKENDS = (
     'rest_framework_social_oauth2.backends.DjangoOAuth2',
     'django.contrib.auth.backends.ModelBackend',
 )
+
+# REST_FRAMEWORK = {
+#     'DEFAULT_PERMISSION_CLASSES': (
+#         'rest_framework.permissions.IsAuthenticated',
+#     ),
+#     'DEFAULT_AUTHENTICATION_CLASSES': (
+#         'rest_framework.authentication.TokenAuthentication',
+#     )
+# }
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/

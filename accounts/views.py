@@ -26,8 +26,18 @@ class UserProfileViewSet(viewsets.ModelViewSet):
     """Handle creating and updating profiles"""
     serializer_class = UserSerializer
     queryset = User.objects.all()
-    authentication_classes = (TokenAuthentication,)
-    permission_classes = (UpdateOwnProfile,)
+    # authentication_classes = (TokenAuthentication,)
+    # permission_classes = (UpdateOwnProfile,)
+
+
+class ConsumerViewSet(viewsets.ModelViewSet):
+    serializer_class = ConsumerSerializer
+    queryset = Consumer.objects.all()
+
+
+class CreateConsumer(generics.ListCreateAPIView):
+    queryset = Consumer.objects.all()
+    serializer_class = ConsumerSerializer
 
 
 class UserLoginApiView(ObtainAuthToken):
@@ -54,11 +64,6 @@ class UserLoginApiView(ObtainAuthToken):
 class ListCreateConsumer(generics.ListCreateAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
-
-
-class CreateConsumer(generics.ListCreateAPIView):
-    queryset = Consumer.objects.all()
-    serializer_class = ConsumerSerializer
 
 
 def register(request):
