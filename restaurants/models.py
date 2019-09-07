@@ -15,6 +15,18 @@ class Restaurant(models.Model):
         return self.name
 
 
+class Meal(models.Model):
+    restaurant = models.ForeignKey(Restaurant, on_delete=models.CASCADE, related_name='meal')
+    meal = models.CharField(max_length=50)
+    description = models.CharField(max_length=200)
+    # quantity = models.CharField(max_length=20)
+    image = models.ImageField(upload_to='meal_image/', blank=False)
+    price = models.IntegerField(default=0)
+
+    def __str__(self):
+        return self.meal
+
+
 class Order(models.Model):
     COOKING = 1
     READY = 2
@@ -30,6 +42,9 @@ class Order(models.Model):
 
     consumer = models.ForeignKey(Consumer, on_delete=models.CASCADE, null=True, blank=True)
     courier = models.ForeignKey(Courier, on_delete=models.CASCADE, null=True, blank=True)
+    meal = models.ForeignKey(Meal, on_delete=models.CASCADE, null=True, blank=True)
+    # quantity = models.CharField(max_length=20)
+    # order_details = models.ForeignKey(OrderDetails, on_delete=models.CASCADE, null=True, blank=True)
     restaurant = models.ForeignKey(Restaurant, on_delete=models.CASCADE, null=True, blank=True)
     status = models.IntegerField(choices=STATUS_CHOICES, null=True, blank=True)
     total = models.IntegerField(blank=True, null=True)
@@ -41,21 +56,10 @@ class Order(models.Model):
         return str(self.id)
 
 
-class Meal(models.Model):
-    restaurant = models.ForeignKey(Restaurant, on_delete=models.CASCADE, related_name='meal')
-    meal = models.CharField(max_length=50)
-    description = models.CharField(max_length=200)
-    image = models.ImageField(upload_to='meal_image/', blank=False)
-    price = models.IntegerField(default=0)
-
-    def __str__(self):
-        return self.meal
-
-
 class OrderDetails(models.Model):
     order = models.ForeignKey(Order, on_delete=models.CASCADE, related_name='order_details')
     meal = models.ForeignKey(Meal, on_delete=models.CASCADE)
-    quantity = models.IntegerField()
+    quantity = models.CharField(max_length=20)
     sub_total = models.IntegerField()
 
     def __str__(self):

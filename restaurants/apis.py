@@ -7,6 +7,8 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from oauth2_provider.models import AccessToken
 from rest_framework.generics import ListAPIView
+
+from accounts.models import Consumer
 from .models import Restaurant, Meal, Order, OrderDetails
 from django.utils import timezone
 from .serializers import RestaurantSerializer, MealSerializer, OrderSerializer
@@ -16,6 +18,11 @@ from rest_framework import viewsets
 class ListRestaurants(ListAPIView):
     queryset = Restaurant.objects.all()
     serializer_class = RestaurantSerializer
+
+
+class ReadyOrdersViewSet(viewsets.ModelViewSet):
+    queryset = Order.objects.filter(status=Order.READY, courier=None).order_by('-id')
+    serializer_class = OrderSerializer
 
 
 class ListRestaurantsViewSet(viewsets.ModelViewSet):
@@ -64,6 +71,8 @@ def add_order(request):
         token = Token.objects.get(key=request.POST.get('token'))
         consumer = token.user.consumer
 
+        # consumer = Consumer.objects.get(user=request.POST.get('user'))
+
         if Order.objects.filter(consumer=consumer).exclude(status=Order.DELIVERED):
             return JsonResponse({
                 'status': 'failed',
@@ -101,8 +110,60 @@ def add_order(request):
                 )
 
             return JsonResponse({
-                'status': 'success'
+                'status': 'success',
+                'error': ''
             })
+
+
+@csrf_exempt
+def check_order_add(request):
+    if request.method == "POST":
+        token = Token.objects.get(key=request.POST.get('token'))
+        consumer = token.user.consumer
+        # consumer = Consumer.objects.get(user=request.POST.get("user"))
+
+    if Order.objects.filter(consumer=consumer).exclude(status=Order.DELIVERED):
+        return JsonResponse({
+            'status': 'failed',
+            'error': 'Your last order must be completed'
+        })
+
+    if not request.POST["address"]:
+        return JsonResponse({
+            'status': 'fail',
+            'error': 'Address is required'
+        })
+
+    quantity = request.POST["quantity"]
+    meal_id = Meal.objects.get(id=request.POST.get("meal_id"))
+    # order_total = Meal.objects.get(id=meal_id).price * int(quantity)
+    total = request.POST["total"]
+
+    print(f'Total: {total}')
+    print(f'Meal Id: {meal_id}')
+    print(f'Meal Price: {type(meal_id.price)}')
+    print(f'Meal Quantity: {quantity}')
+    print(f'Meal Quantity Type: {type(quantity)}')
+
+    order = Order.objects.create(
+        consumer=consumer,
+        restaurant_id=request.POST["restaurant_id"],
+        total=total,
+        status=Order.COOKING,
+        address=request.POST["address"]
+    )
+    order_details = OrderDetails.objects.create(
+        order=order,
+        meal_id=meal_id.id,
+        quantity=quantity,
+        sub_total=total
+    )
+    print(meal_id)
+    # print(meal_quantity)
+
+    return JsonResponse({
+        "status": "success"
+    })
 
 
 def get_latest_order(request):

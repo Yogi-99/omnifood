@@ -68,7 +68,7 @@ class OrderCourierSerializer(serializers.ModelSerializer):
         model = Courier
         fields = [
             'id',
-            'name'
+            'name',
             'phone',
             'address'
         ]
@@ -82,7 +82,18 @@ class OrderRestaurantSerializer(serializers.ModelSerializer):
             'name',
             'phone',
             'address',
+            'logo',
         ]
+
+
+# class TestMealSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = Meal
+#         fields = [
+#             'id',
+#             'meal',
+#             'price',
+#         ]
 
 
 class OrderMealSerializer(serializers.ModelSerializer):
@@ -90,13 +101,27 @@ class OrderMealSerializer(serializers.ModelSerializer):
         model = Meal
         fields = [
             'id',
-            'name',
-            'price'
+            'restaurant',
+            'meal',
+            'price',
+            'description',
+            'image',
+        ]
+
+
+class TestOrderDetailSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = OrderDetails
+        fields = [
+            'id',
+            'meal',
+            'quantity',
+            'sub_total'
         ]
 
 
 class OrderDetailsSerializer(serializers.ModelSerializer):
-    meal = OrderMealSerializer
+    meal = OrderMealSerializer()
 
     class Meta:
         model = OrderDetails
@@ -112,8 +137,9 @@ class OrderSerializer(serializers.ModelSerializer):
     consumer = OrderConsumerSerializer()
     courier = OrderCourierSerializer()
     restaurant = OrderRestaurantSerializer()
-    order_details = OrderDetailsSerializer(many=True)
+    # order_details = OrderDetailsSerializer(many=True)
     status = serializers.ReadOnlyField(source='get_status_display')
+    meal = OrderMealSerializer()
 
     class Meta:
         model = Order
@@ -122,9 +148,9 @@ class OrderSerializer(serializers.ModelSerializer):
             'consumer',
             'restaurant',
             'courier',
-            'order_details',
+            # 'order_details',
             'total',
             'status',
-            'address',
-
+            # 'address',
+            'meal',
         ]

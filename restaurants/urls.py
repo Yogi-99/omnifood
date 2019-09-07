@@ -6,6 +6,7 @@ from rest_framework.routers import DefaultRouter
 
 router = DefaultRouter()
 router.register('restaurants', restaurant_views.ListRestaurantsViewSet)
+router.register('orders', apis.ReadyOrdersViewSet)
 
 urlpatterns = [
     path('dashboard', restaurant_views.dashboard, name='dashboard'),
@@ -23,6 +24,8 @@ urlpatterns = [
     path('order/pick/', apis.pick_order),
     path('driver/latestorder/', apis.driver_latest_order),
     path('order/delivered/', apis.order_delivered),
+
+    path('check/order/', apis.check_order_add),
 
     path('', include(router.urls)),
 #    path('order/notification/<last_request_item>', apis.order_notification),

@@ -1,13 +1,18 @@
 from django.shortcuts import render, redirect
 from rest_framework import viewsets
 
-from restaurants.serializers import RestaurantSerializer
+from restaurants.serializers import RestaurantSerializer, OrderSerializer
 from .forms import UserEditForm
 from .forms import RestaurantEditForm, MealForm
 from .models import Meal, Order, Restaurant
 
 
 # Create your views here.
+
+# class ReadyOrdersViewSet(viewsets.ModelViewSet):
+#     queryset = Order.objects.filter(status=Order.READY, courier=None).order_by('-id')
+#     serializer_class = OrderSerializer
+
 
 def dashboard(request):
     return render(request, 'restaurants/dashboard.html')

@@ -1,11 +1,23 @@
 from rest_framework import serializers
-from .models import Consumer
+from .models import Consumer, Courier
 from django.contrib.auth.models import User
 
 
 class ConsumerSerializer(serializers.ModelSerializer):
     class Meta:
         model = Consumer
+        fields = [
+            'id',
+            'user',
+            'phone',
+            'address',
+        ]
+
+
+class CourierSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Courier
         fields = [
             'id',
             'user',
