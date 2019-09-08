@@ -24,6 +24,7 @@ urlpatterns = [
     path('order/pick/', apis.pick_order),
     path('driver/latestorder/', apis.driver_latest_order),
     path('order/delivered/', apis.order_delivered),
+    path('courier/revenue', apis.get_courier_revenue, name='courier_revenue'),
 
     path('check/order/', apis.check_order_add),
 

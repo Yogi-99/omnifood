@@ -1,9 +1,68 @@
 {% extends "restaurants/dashboard.html" %}
 
 {% block title %}
-Report
+    Report
+{% endblock %}
+
+{% block scripthead %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 {% endblock %}
 
 {% block content %}
-    Report Page
+
+
+    <div class="card card-chart">
+        <div class="card-header card-header-success">
+            <div class="ct-chart" id="dailySalesChart">
+                <canvas id="revenueChart" height="110"/>
+            </div>
+        </div>
+        <div class="card-body">
+            <h4 class="card-title text-center text-white">Last 7 days</h4>
+
+        </div>
+    </div>
+
+    <script>
+
+        Chart.defaults.global.defaultFontFamily = 'Lato';
+        Chart.defaults.global.defaultFontColor = '#fff';
+
+        let myChart = document.getElementById('revenueChart').getContext('2d');
+
+        let revenue = new Chart(myChart, {
+            type: 'bar',
+            data: {
+                labels: [
+                    'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'
+                ],
+                datasets: [{
+                    label: 'Bar Chart',
+                    data: {{ revenue }},
+                    borderWidth: 1,
+                    backgroundColor:'rgba(255, 99, 132, 0.6)',
+                    borderColor: '#777',
+                    hoverBorderWidth:1,
+                    hoverBorderColor: '#606477'
+
+                }, {
+                    label: 'Line Chart',
+                    data: {{ orders }},
+                    type: 'line',
+                    backgroundColor: '#777'
+                }],
+
+            },
+            options: {
+                title:{
+                    display:true,
+                    text: '{{ restaurant_name }} Stats',
+                    fontSize:26,
+                    fontFamily:'sans-serif'
+                }
+            }
+        })
+    </script>
+
 {% endblock %}

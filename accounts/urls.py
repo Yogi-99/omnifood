@@ -19,6 +19,8 @@ urlpatterns = [
     # path('create/consumer', user_views.CreateConsumer.as_view(), name='create_consumer'),
     path('api/login', csrf_exempt(user_views.UserLoginApiView.as_view()), name='api_login'),
     path('api/login/courier', csrf_exempt(user_views.CourierLoginApiView.as_view()), name='courier_login'),
+    path('courier/location', apis.courier_location, name='courier_location'),
+    path('get/courier/location', apis.get_courier_location, name='get_courier_location'),
 
 
     path('courier/orders/ready', apis.GetOrdersListApiView.as_view()),

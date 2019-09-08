@@ -1,6 +1,12 @@
 {% extends "restaurants/base.html" %}
 <head>
     <link rel="stylesheet" href="/bootstrap4/css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
+
+    {% block scripthead %}
+
+    {% endblock %}
 </head>
 {% block title %}
     Restaurant Dashboard
@@ -25,7 +31,7 @@
                     url: '/order/notification/' + now.toISOString() + '/',
                     method: 'GET',
                     success: function (data) {
-                        if(data['notification'] === 0) {
+                        if (data['notification'] === 0) {
                             $('badge').text('');
                         } else {
                             $('badge').text(data['notification']);
@@ -59,7 +65,7 @@
     <li class="nav-item ">
         <a class="nav-link" href="{% url 'report' %}">
             <i class="material-icons"></i>
-            <p>Reports</p>
+            <p>Stats</p>
         </a>
     </li>
     <li class="nav-item ">

@@ -7,7 +7,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from oauth2_provider.models import AccessToken
 from rest_framework.generics import ListAPIView
-
+from datetime import datetime, timedelta
 from accounts.models import Consumer
 from .models import Restaurant, Meal, Order, OrderDetails
 from django.utils import timezone
@@ -246,6 +246,31 @@ def order_delivered(request):
 
     return JsonResponse({
         'status': 'delivered'
+    })
+
+
+def get_courier_revenue(request):
+    revenue = {}
+    today = timezone.now()
+
+    token = Token.objects.get(key=request.GET.get('token'))
+    courier = token.user.courier
+
+    weekdays = [today + timedelta(days=i) for i in range(0 - today.weekday(), 7 - today.weekday())]
+
+    for day in weekdays:
+        orders = Order.objects.filter(
+            courier=courier,
+            status=Order.DELIVERED,
+            created_at__year=day.year,
+            created_at__month=day.month,
+            created_at__day=day.day
+        )
+
+        revenue[day.strftime("%y %b %d")] = sum(order.total for order in orders)
+
+    return JsonResponse({
+        'revenue': revenue
     })
 
 # def order_notification(request, last_request_time):

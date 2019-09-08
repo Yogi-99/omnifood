@@ -1,6 +1,9 @@
+from django.db.models import Count, Case, When
 from django.shortcuts import render, redirect
 from rest_framework import viewsets
+from datetime import datetime, timedelta, timezone
 
+from accounts.models import Courier
 from restaurants.serializers import RestaurantSerializer, OrderSerializer
 from .forms import UserEditForm
 from .forms import RestaurantEditForm, MealForm
@@ -60,7 +63,35 @@ def order(request):
 
 
 def report(request):
-    return render(request, 'restaurants/report.html')
+    today = datetime.now()
+    revenue = []
+    orders = []
+    name = request.user.restaurant
+    print("Restaurant: ", name)
+
+    weekdays = [today - timedelta(days=i) for i in range(0 - today.weekday(), 7 - today.weekday())]
+    print(today.weekday())
+    print(0 - today.weekday())
+    print(7 - today.weekday())
+    print(today + timedelta(days=1))
+    print(weekdays)
+
+    for day in weekdays:
+        delivered_orders = Order.objects.filter(
+            restaurant=request.user.restaurant,
+            status=Order.DELIVERED,
+            created_at__year=day.year,
+            created_at__month=day.month,
+            created_at__day=day.day
+        )
+        revenue.append(sum(order.total for order in delivered_orders))
+        orders.append(delivered_orders.count())
+
+    return render(request, 'restaurants/report.html', {
+        'revenue': revenue,
+        'orders': orders,
+        'restaurant_name': name
+    })
 
 
 def add_meal(request):

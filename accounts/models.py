@@ -27,6 +27,7 @@ class Courier(models.Model):
     avatar = models.ImageField(upload_to='avatar')
     phone = models.CharField(max_length=20)
     address = models.CharField(max_length=500)
+    location = models.CharField(max_length=400, blank=True)
 
     def __str__(self):
         return self.user.get_full_name()
