@@ -69,7 +69,7 @@ def report(request):
     name = request.user.restaurant
     print("Restaurant: ", name)
 
-    weekdays = [today - timedelta(days=i) for i in range(0 - today.weekday(), 7 - today.weekday())]
+    weekdays = [today + timedelta(days=i) for i in range(0 - today.weekday(), 7 - today.weekday())]
     print(today.weekday())
     print(0 - today.weekday())
     print(7 - today.weekday())

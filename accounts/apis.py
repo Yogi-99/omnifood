@@ -15,6 +15,28 @@ class GetOrdersListApiView(ListAPIView):
 
 
 @csrf_exempt
+def consumer_location(request):
+    if request.method == "POST":
+        token = Token.objects.get(key=request.POST.get('token'))
+        consumer = token.user.consumer
+
+        consumer.latitude = request.POST['latitude']
+        consumer.longitude = request.POST['longitude']
+        consumer.save()
+
+        return JsonResponse({
+            'status': 'success',
+            'error': ''
+        })
+
+
+@csrf_exempt
+def get_consumer_location(request):
+    consumer = request.user.consumer.get(id=request['id'])
+    print('Consumer: ', consumer)
+
+
+@csrf_exempt
 def courier_location(request):
     if request.method == "POST":
         token = Token.objects.get(key=request.POST.get('token'))
@@ -30,7 +52,6 @@ def courier_location(request):
 
 
 def get_courier_location(request):
-
     token = Token.objects.get(key=request.GET.get('token'))
     consumer = token.user.consumer
 

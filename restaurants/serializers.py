@@ -57,7 +57,9 @@ class OrderConsumerSerializer(serializers.ModelSerializer):
             'id',
             'name',
             'phone',
-            'address'
+            'address',
+            'latitude',
+            'longitude'
         )
 
 

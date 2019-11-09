@@ -11,13 +11,14 @@ class Consumer(models.Model):
     avatar = models.ImageField(upload_to='avatar')
     phone = models.CharField(max_length=20)
     address = models.CharField(max_length=500)
+    latitude = models.CharField(max_length=400, blank=True)
+    longitude = models.CharField(max_length=400, blank=True)
 
-    #
     # @receiver(post_save, sender=User)
     # def create_auth_token(self, instance=None, created=False, **kwargs):
     #     if created:
     #         Token.objects.create(user=instance)
-    #
+
     def __str__(self):
         return self.user.get_full_name()
 

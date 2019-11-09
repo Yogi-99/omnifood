@@ -3,6 +3,7 @@ from django.urls import include
 from . import views as restaurant_views
 from . import apis
 from rest_framework.routers import DefaultRouter
+from django.contrib import admin
 
 router = DefaultRouter()
 router.register('restaurants', restaurant_views.ListRestaurantsViewSet)
@@ -29,5 +30,7 @@ urlpatterns = [
     path('check/order/', apis.check_order_add),
 
     path('', include(router.urls)),
-#    path('order/notification/<last_request_item>', apis.order_notification),
+    #    path('order/notification/<last_request_item>', apis.order_notification),
 ]
+admin.site.site_header = 'Omnifood'
+admin.site.index_title = 'Omnifood Administration'

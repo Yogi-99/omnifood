@@ -19,7 +19,7 @@
             </div>
         </div>
         <div class="card-body">
-            <h4 class="card-title text-center text-white">Last 7 days</h4>
+            <h4 class="card-title text-center text-white">This Week</h4>
 
         </div>
     </div>
@@ -41,14 +41,14 @@
                     label: 'Bar Chart',
                     data: {{ revenue }},
                     borderWidth: 1,
-                    backgroundColor:'rgba(255, 99, 132, 0.6)',
+                    backgroundColor:'rgba(255, 255, 255, 0.4)',
                     borderColor: '#777',
                     hoverBorderWidth:1,
                     hoverBorderColor: '#606477'
 
                 }, {
                     label: 'Line Chart',
-                    data: {{ orders }},
+                    data: {{ revenue }},
                     type: 'line',
                     backgroundColor: '#777'
                 }],

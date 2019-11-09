@@ -189,22 +189,25 @@ def get_ready_orders(request):
 
 @csrf_exempt
 def pick_order(request):
-    if request.method == 'POST':
+    if request.method == "POST":
         token = Token.objects.get(key=request.POST.get('token'))
-
         courier = token.user.courier
 
-        if Order.objects.filter(courier=courier).exclude(status=Order.ONTHEWAY):
-            return JsonResponse({
-                'status': 'failed',
-                'error': 'only one order at a time'
-            })
+        print('courier: ', courier)
+        print("token: ", token)
+        print(Order.objects.filter(status=Order.READY))
+
+        # if Order.objects.filter(courier=courier).exclude(status=Order.ONTHEWAY):
+        #     return JsonResponse({
+        #         'status': 'failed',
+        #         'error': 'only one order at a time'
+        #     })
 
         try:
             order = Order.objects.get(
                 id=request.POST['order_id'],
                 courier=None,
-                status=Order.READY
+                status=Order.READY,
             )
 
             order.courier = courier
